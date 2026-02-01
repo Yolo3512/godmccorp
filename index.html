@@ -1,0 +1,1196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>God’s Misguided Children [GODMC] — EVE Online Corporation</title>
+
+  <meta name="description" content="God’s Misguided Children [GODMC] — English-speaking EVE Online corporation. Small-gang PvP, teamwork, and newbro-friendly training." />
+  <meta property="og:title" content="God’s Misguided Children [GODMC]" />
+  <meta property="og:description" content="Small-gang PvP • Newbro-friendly • Null-sec leadership • Join Discord to apply." />
+  <meta property="og:type" content="website" />
+
+  <!-- IMGUR NOTE: if any image fails to load, try swapping .png <-> .jpg in the i.imgur.com URL -->
+
+  <!-- Favicon (browser tab icon) -->
+  <link rel="icon" href="https://i.imgur.com/Rdknv68.png?v=5" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://i.imgur.com/Rdknv68.png?v=5" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://i.imgur.com/Rdknv68.png?v=5" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://i.imgur.com/Rdknv68.png?v=5" />
+  <link rel="shortcut icon" href="https://i.imgur.com/Rdknv68.png?v=5" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#06070b;
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.68);
+      --silver: rgba(226,232,240,.92);
+      --red:#dc2626;
+      --gold:#f59e0b;
+      --border: rgba(255,255,255,.12);
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --max: 1160px;
+      --r: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 520px at 18% 12%, rgba(220,38,38,.25), transparent 62%),
+        radial-gradient(820px 520px at 86% 18%, rgba(245,158,11,.18), transparent 58%),
+        radial-gradient(720px 520px at 60% 92%, rgba(148,163,184,.10), transparent 60%),
+        var(--bg);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+
+    /* Accessibility */
+    .skip-link{
+      position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden;
+    }
+    .skip-link:focus{
+      left:16px; top:16px; width:auto; height:auto; padding:10px 14px;
+      background:rgba(0,0,0,.7); border:1px solid var(--border); border-radius:12px;
+      z-index:9999;
+    }
+
+    /* Utility text */
+    .pill-text{color:var(--muted); font-weight:800;}
+    .tag-row{margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;}
+    .fleet-sub{color:var(--silver); opacity:.9; font-weight:700; margin:0;}
+    .accent-gold{color:var(--gold);}
+
+    /* Dynamic UI elements */
+    .twitch-note{padding:10px 14px;}
+    .kb-updated{margin-top:10px; font-size:12px;}
+
+
+    .stars{
+      position:fixed; inset:0; pointer-events:none; opacity:.16;
+      background-image:
+        radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,.6) 50%, transparent 52%),
+        radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,.5) 50%, transparent 52%),
+        radial-gradient(1px 1px at 70% 30%, rgba(255,255,255,.55) 50%, transparent 52%),
+        radial-gradient(1px 1px at 85% 75%, rgba(255,255,255,.45) 50%, transparent 52%),
+        radial-gradient(1px 1px at 50% 50%, rgba(255,255,255,.35) 50%, transparent 52%);
+      background-size: 420px 420px;
+      mix-blend-mode: screen;
+      filter: blur(.2px);
+      z-index:0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; scroll-behavior:auto !important; }
+    }
+
+    .nav{
+      position:sticky; top:0; z-index:20;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: transparent;
+      border-bottom: none;
+      isolation: isolate; /* ensure pseudo-element layers correctly */
+
+      /* logo sizing + vertical offset (tweak these to move the logo) */
+      --wrapPad: 20px;
+      --logoSize: 220px;
+      --logoOffsetY: 32px; /* positive = moves logo down */
+      --logoOffsetX: -18px; /* negative = moves logo left */
+    }
+    .nav::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: rgba(6,7,11,.68);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      z-index:0;
+
+      /* punch a hole behind the logo so the bar doesn't darken it */
+      --holeX: calc(var(--wrapPad) + (var(--logoSize) / 2) + var(--logoOffsetX));
+      --holeR: calc((var(--logoSize) / 2) + 14px);
+      -webkit-mask: radial-gradient(circle at var(--holeX) calc(50% + var(--logoOffsetY)), transparent 0 var(--holeR), #000 calc(var(--holeR) + 1px));
+      mask: radial-gradient(circle at var(--holeX) calc(50% + var(--logoOffsetY)), transparent 0 var(--holeR), #000 calc(var(--holeR) + 1px));
+    }
+.nav-inner{
+      position:relative;
+      z-index:1;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:2px 0; /* smaller header */
+      gap:10px;
+      min-height: 48px;
+    }
+.brand{
+      position:relative;
+      display:flex;
+      align-items:center;
+      gap:14px;
+      padding-left: 240px; /* reserve space for the 220px logo */
+      font-family:"Space Grotesk", Inter, sans-serif;
+      letter-spacing:.2px;
+      font-weight:700;
+      white-space:nowrap;
+    }
+/* Bigger logo + hover pulse */
+    
+    .logo-wrap{
+      position:absolute;
+      left:0;
+      top:50%;
+      width:220px;
+      height:220px;
+      transform: translateX(var(--logoOffsetX)) translateY(-50%) translateY(var(--logoOffsetY));
+      border-radius:68px;
+      overflow:hidden;
+      border:none;
+      background: transparent;
+      box-shadow:none;
+      flex: 0 0 auto;
+      transition: transform .18s ease;
+      z-index: 2;
+    }
+.logo-wrap::after{
+      content:"";
+      position:absolute;
+      inset:-60%;
+      background: linear-gradient(90deg, transparent 35%, rgba(255,255,255,.24) 50%, transparent 65%);
+      transform: translateX(-80%) rotate(20deg);
+      opacity: 0;
+      pointer-events:none;
+    }
+    .logo-wrap:hover{
+      transform: translateX(var(--logoOffsetX)) translateY(-50%) translateY(var(--logoOffsetY)) scale(1.02);
+    }
+.logo-wrap:hover::after{
+      opacity: 1;
+      animation: shineSweep .75s ease-out forwards;
+    }
+    @keyframes shineSweep{
+      from { transform: translateX(-80%) rotate(20deg); }
+      to   { transform: translateX(80%)  rotate(20deg); }
+    }
+    @keyframes logoPulse{
+      0%{ transform: translateY(-1px) scale(1); }
+      45%{ transform: translateY(-1px) scale(1.06); }
+      100%{ transform: translateY(-1px) scale(1.00); }
+    }
+
+    .logo-mark{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:contain;
+      padding:12px;
+      filter: drop-shadow(0 0 14px rgba(245,158,11,.18)) drop-shadow(0 0 18px rgba(220,38,38,.14));
+      transform-origin: 50% 50%;
+      animation: logoFloat 3.8s ease-in-out infinite, logoGlow 2.9s ease-in-out infinite;
+    }
+    @keyframes logoFloat{
+      0%,100% { transform: translateY(0px); }
+      50%     { transform: translateY(-3px); }
+    }
+    @keyframes logoGlow{
+      0%,100% { filter: drop-shadow(0 0 12px rgba(245,158,11,.14)) drop-shadow(0 0 16px rgba(220,38,38,.10)); }
+      50%     { filter: drop-shadow(0 0 20px rgba(245,158,11,.28)) drop-shadow(0 0 24px rgba(220,38,38,.18)); }
+    }
+
+    .links{display:flex; gap:18px; align-items:center; color:var(--muted); font-weight:650}
+    .links a:hover{color:var(--text)}
+    .right{display:flex; gap:10px; align-items:center}
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 16px; border-radius: 14px;
+      border:1px solid transparent;
+      font-weight:800;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+      gap:10px; cursor:pointer; user-select:none;
+      letter-spacing:.1px;
+      white-space:nowrap;
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, var(--red), #ef4444);
+      box-shadow: 0 18px 60px rgba(220,38,38,.28);
+    }
+    .btn.primary:hover{ transform: translateY(-1px); box-shadow: 0 22px 70px rgba(220,38,38,.38);}
+    .btn.gold{
+      background: linear-gradient(135deg, var(--gold), #f97316);
+      box-shadow: 0 18px 60px rgba(245,158,11,.22);
+    }
+    .btn.gold:hover{ transform: translateY(-1px); box-shadow: 0 22px 70px rgba(245,158,11,.32);}
+    .btn.secondary{
+      background: rgba(226,232,240,.06);
+      border-color: rgba(226,232,240,.16);
+      color: var(--silver);
+    }
+    .btn.secondary:hover{ transform: translateY(-1px); border-color: rgba(226,232,240,.28); }
+    .btn.small{padding:10px 12px; border-radius: 12px; font-weight:800}
+    .btn.twitch{
+      background: linear-gradient(135deg, #9146FF, #6d28d9);
+      box-shadow: 0 18px 60px rgba(145,70,255,.25);
+    }
+    .btn.twitch:hover{ transform: translateY(-1px); box-shadow: 0 22px 70px rgba(145,70,255,.34);}
+
+    /* Hero */
+    .hero{
+      position:relative;
+      border-radius: 26px;
+      overflow:hidden;
+      margin-top: 18px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.10);
+      background:
+        linear-gradient(to bottom, rgba(6,7,11,.88), rgba(6,7,11,.55), rgba(6,7,11,.94)),
+        url("https://i.imgur.com/1hlCBzJ.png");
+      background-size: cover;
+      background-position: center;
+      z-index:1;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(900px 420px at 70% 35%, rgba(245,158,11,.25), transparent 62%),
+        radial-gradient(700px 420px at 20% 80%, rgba(220,38,38,.22), transparent 60%);
+      pointer-events:none;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      right:-60px;
+      top:-30px;
+      width: 420px;
+      height: 420px;
+      background: url("images/GODMC.png") no-repeat center / contain;
+      opacity: .07;
+      transform: rotate(6deg);
+      pointer-events:none;
+      filter: blur(.2px);
+    }
+
+    .hero-grid{
+      position:relative;
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:18px;
+      padding: 54px 22px;
+      z-index:1;
+    }
+
+    .pill{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:8px 12px; border-radius:999px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      color: var(--muted);
+      font-weight:800; font-size:14px;
+      flex-wrap:wrap;
+    }
+    h1{
+      margin:18px 0 12px;
+      font-family:"Space Grotesk", Inter, sans-serif;
+      font-size: clamp(44px, 5.1vw, 72px);
+      line-height:1.02;
+      letter-spacing:-1px;
+      text-shadow: 0 12px 50px rgba(0,0,0,.8);
+    }
+    .sub{
+      color: var(--silver);
+      opacity:.92;
+      font-size: 18px;
+      margin: 0 0 20px;
+      max-width: 72ch;
+    }
+    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:16px}
+
+    .panel{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.14);
+      border-radius: var(--r);
+      padding:18px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.45);
+      position:relative;
+      overflow:hidden;
+    }
+    .panel h3{
+      margin: 0 0 10px;
+      font-family:"Space Grotesk", Inter, sans-serif;
+      letter-spacing:-.3px;
+    }
+    .meta{display:grid; gap:10px; margin-top: 12px;}
+    .meta-row{
+      display:flex; justify-content:space-between; gap:12px;
+      padding:10px 12px;
+      border-radius: 14px;
+      background: rgba(0,0,0,.20);
+      border:1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+      font-weight:700;
+    }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--silver);
+      font-size: 13px;
+      font-weight:900;
+      letter-spacing:.2px;
+      white-space:nowrap;
+    }
+    .tag.red{border-color: rgba(220,38,38,.35); background: rgba(220,38,38,.10)}
+    .tag.gold{border-color: rgba(245,158,11,.35); background: rgba(245,158,11,.10)}
+
+    .section{padding:52px 0; position:relative; z-index:1;}
+    .section h2{
+      font-family:"Space Grotesk", Inter, sans-serif;
+      margin:0 0 10px;
+      letter-spacing:-.5px;
+      font-size: clamp(28px, 2.6vw, 40px);
+    }
+    .section p.lead{margin:0 0 18px; color:var(--muted); max-width:78ch}
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+    .card{
+      grid-column: span 4;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: var(--r);
+      padding:18px;
+      box-shadow: 0 12px 45px rgba(0,0,0,.28);
+      transition: transform .18s ease, border-color .18s ease;
+      min-height: 160px;
+    }
+    .card:hover{ transform: translateY(-3px); border-color: rgba(245,158,11,.30); }
+    .card h3{
+      margin:0 0 8px;
+      font-family:"Space Grotesk", Inter, sans-serif;
+      letter-spacing:-.2px;
+    }
+    .card p{margin:0; color:var(--muted)}
+    .icon{
+      width:42px; height:42px; border-radius: 16px;
+      display:grid; place-items:center;
+      background: rgba(0,0,0,.22);
+      border: 1px solid rgba(255,255,255,.12);
+      margin-bottom: 12px;
+      font-weight:900;
+    }
+
+    /* Life in GODMC: 3 photos only, no duplicates */
+    .photo-strip{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+      margin-top: 16px;
+    }
+    .shot{
+      grid-column: span 4;
+      border-radius: 22px;
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      min-height: 240px;
+      position:relative;
+      background-size: cover;
+      background-position: center;
+      transform: translateY(0);
+      transition: transform .18s ease, border-color .18s ease;
+    }
+    .shot::before{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(to top, rgba(6,7,11,.78), rgba(6,7,11,.10), rgba(6,7,11,.70));
+      pointer-events:none;
+    }
+    .shot::after{
+      content: attr(data-label);
+      position:absolute;
+      left:14px; bottom:12px;
+      color: rgba(226,232,240,.86);
+      font-weight:900;
+      font-size: 13px;
+      background: rgba(0,0,0,.30);
+      border:1px solid rgba(255,255,255,.10);
+      padding:8px 10px;
+      border-radius: 999px;
+    }
+    .shot:hover{ border-color: rgba(245,158,11,.26); transform: translateY(-2px); }
+
+    .s1{ background-image: url("https://i.imgur.com/fFUcjhU.png"); }
+    .s2{ background-image: url("https://i.imgur.com/OCKfsgV.png"); }
+    .s3{ background-image: url("https://i.imgur.com/U1GhKsO.png"); }
+
+    .fleet-banner{
+      position:relative;
+      min-height: 420px;
+      display:grid;
+      place-items:center;
+      border-radius: 26px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(to right, rgba(6,7,11,.94), rgba(6,7,11,.55), rgba(6,7,11,.94)),
+        url("https://i.imgur.com/0KdsBhp.png");
+      background-size: cover;
+      background-position: center;
+      margin: 16px 0 70px;
+      z-index:1;
+    }
+    .fleet-banner::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(900px 360px at center, rgba(226,232,240,.14), transparent 62%),
+        radial-gradient(700px 280px at 40% 40%, rgba(220,38,38,.16), transparent 60%),
+        radial-gradient(700px 280px at 65% 55%, rgba(245,158,11,.14), transparent 60%);
+      pointer-events:none;
+    }
+    .fleet-text{
+      position:relative;
+      text-align:center;
+      max-width: 850px;
+      padding: 22px;
+    }
+
+    .embed-card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.14);
+      border-radius: 22px;
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      margin-top: 16px;
+    }
+    .embed-head{
+      padding:14px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+    .embed-head h3{
+      margin:0;
+      font-family:"Space Grotesk", Inter, sans-serif;
+      letter-spacing:-.2px;
+      font-size:18px;
+    }
+    .embed-frame{
+      width:100%;
+      height:520px;
+      border:0;
+      display:block;
+      background: rgba(0,0,0,.20);
+    }
+
+    .values{
+      grid-column: span 7;
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: var(--r);
+      padding:18px;
+      box-shadow: var(--shadow);
+    }
+    .values ul{
+      list-style:none;
+      padding:0; margin:12px 0 0;
+      display:grid; gap:10px;
+    }
+    .values li{
+      padding:12px 12px;
+      border-radius: 14px;
+      background: rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.10);
+      color: var(--silver);
+      font-weight:800;
+    }
+    .values li span{color: var(--muted); font-weight:700}
+    .values b{color: var(--gold)}
+
+    .join{
+      grid-column: span 5;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.14);
+      border-radius: var(--r);
+      padding:18px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .join::before{
+      content:"";
+      position:absolute;
+      right:-40px; bottom:-40px;
+      width:220px; height:220px;
+      background: url("https://i.imgur.com/Rdknv68.png") no-repeat center / contain;
+      opacity:.06;
+      transform: rotate(-8deg);
+      pointer-events:none;
+    }
+    .steps{margin:12px 0 0; padding-left: 18px; color: var(--muted); font-weight:700}
+    .steps li{margin:8px 0}
+    .req{ margin-top:14px; display:flex; flex-wrap:wrap; gap:8px; }
+
+    .ceo-section{ padding: 30px 0 70px; }
+    .ceo-card{
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap: 18px;
+      align-items: stretch;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 22px;
+      overflow:hidden;
+      box-shadow: var(--shadow);
+    }
+    .ceo-media{
+      position:relative;
+      background:
+        radial-gradient(500px 220px at 50% 20%, rgba(245,158,11,.18), transparent 60%),
+        radial-gradient(500px 220px at 40% 70%, rgba(220,38,38,.18), transparent 60%),
+        rgba(0,0,0,.25);
+      border-right: 1px solid rgba(255,255,255,.10);
+    }
+    .ceo-media img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+      filter: contrast(1.05) saturate(1.05);
+    }
+    .ceo-content{ padding: 18px; position:relative; }
+    .ceo-kicker{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom: 10px; }
+    .ceo-title{
+      margin: 6px 0 10px;
+      font-family:"Space Grotesk", Inter, sans-serif;
+      letter-spacing:-.4px;
+      font-size: clamp(22px, 2.3vw, 30px);
+    }
+    .ceo-copy{ margin:0; color: var(--muted); font-weight:650; }
+    .ceo-quote{
+      margin-top: 14px;
+      padding: 12px 12px;
+      border-radius: 16px;
+      background: rgba(0,0,0,.20);
+      border: 1px solid rgba(255,255,255,.10);
+      color: rgba(226,232,240,.92);
+      font-weight:800;
+      letter-spacing:.15px;
+    }
+    .ceo-actions{ margin-top: 14px; display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+
+    .reveal{
+      opacity:0;
+      transform: translateY(10px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .reveal.show{
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    footer{
+      padding:40px 0 56px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: var(--muted);
+      font-size: 14px;
+      position:relative;
+      z-index:1;
+    }
+
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns: 1fr;}
+      .links{display:none;}
+      .card{grid-column: span 6;}
+      .values{grid-column: span 12;}
+      .join{grid-column: span 12;}
+      .shot{grid-column: span 12;}
+      .nav{--logoSize:184px; --logoOffsetY: 26px;}
+      .logo-wrap{width:184px; height:184px; border-radius:56px;}
+      .brand{padding-left: 204px;}
+      .hero::after{ width: 320px; height: 320px; right:-60px; top:-60px; }
+      .ceo-card{ grid-template-columns: 1fr; }
+      .ceo-media{ border-right: none; border-bottom: 1px solid rgba(255,255,255,.10); }
+      .ceo-media img{ max-height: 480px; }
+    }
+    @media (max-width: 620px){
+      .hero-grid{padding: 44px 18px;}
+      .card{grid-column: span 12;}
+      .nav{--logoSize:168px; --wrapPad:16px; --logoOffsetY: 24px;}
+      .logo-wrap{width:168px; height:168px; border-radius:52px;}
+      .brand{padding-left: 188px;}
+    }
+  
+    /* zKillboard feed fallback (no iframe) */
+    .zkb-feed{ padding: 14px; }
+    .zkb-feed .muted{ color: rgba(255,255,255,.65); font-size: 14px; }
+    .zkb-feed ul{ list-style:none; margin: 10px 0 0; padding:0; display:flex; flex-direction:column; gap:10px; }
+    .zkb-feed li{
+      display:flex; justify-content:space-between; gap:14px;
+      padding:10px 12px; border-radius: 14px;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.10);
+      align-items:center;
+    }
+    .zkb-feed .left{
+      display:flex; align-items:center; gap:12px; min-width:0;
+    }
+    .zkb-feed .kb-imgs{ display:flex; align-items:center; gap:10px; flex: 0 0 auto; }
+    .zkb-feed .kb-img{
+      width:40px; height:40px; object-fit:cover;
+      border-radius:12px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.25);
+      transition: transform 120ms ease;
+    }
+    .zkb-feed .kb-img.round{ border-radius:999px; }
+    .zkb-feed .kb-img:hover{ transform: scale(2.1); z-index:5; }
+    .zkb-feed a{ color: rgba(255,255,255,.92); text-decoration:none; }
+    .zkb-feed a:hover{ text-decoration:underline; }
+    .zkb-feed .meta{ color: rgba(255,255,255,.65); font-size: 13px; white-space:nowrap; }
+    
+  </style>
+
+  <meta property="og:image" content="https://i.imgur.com/Rdknv68.png?v=5" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#06070b" />
+</head>
+
+<body>
+    <a class="skip-link" href="#about">Skip to content</a>
+<div class="stars"></div>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#about" aria-label="GODMC home">
+        <span class="logo-wrap" aria-hidden="true">
+          <img class="logo-mark" src="https://i.imgur.com/Rdknv68.png" alt="GODMC logo">
+        </span>
+        <span>God’s Misguided Children <span class="muted">[GODMC]</span></span>
+      </a>
+
+      <nav class="links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#gallery">Media</a>
+        <a href="#killboard">Killboard</a>
+        <a href="#join">Join</a>
+        <a href="#ceo">CEO</a>
+        <a href="#twitch">Twitch</a>
+      </nav>
+
+      <div class="right">
+        <a class="btn small secondary" href="#join">Apply</a>
+        <a class="btn small primary" href="https://discord.gg/tMWAseFwhM" target="_blank" rel="noopener">Discord</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" id="about">
+      <div class="hero-grid">
+        <div>
+          <div class="pill">
+            <span class="tag gold">Recruiting</span>
+            <span class="pill-text">English-speaking • Small-gang PvP • Newbro-friendly</span>
+          </div>
+
+          <h1>Fly smart. Fight together.</h1>
+
+          <p class="sub">
+            <b>God’s Misguided Children [GODMC]</b> is an English speaking EVE Online corporation in search of the next line of
+            AMAZING pilots to call GODMC their next home in New Eden.
+            We’re a tight-knit group focused on small-gang PvP, teamwork, and learning through action.
+            When the guns are cold, we balance things out with solid PvE—mining, ratting, and exploration—to keep the ISK flowing.
+          </p>
+
+          <div class="cta">
+            <a class="btn primary" href="https://discord.gg/tMWAseFwhM" target="_blank" rel="noopener">Join Discord</a>
+            <a class="btn gold" href="https://www.eveonline.com/signup?invc=8e4f4b9b-ed23-48f6-9779-9a1909a95064" target="_blank" rel="noopener">
+              Recruit Link (1M SP)
+            </a>
+          </div>
+        </div>
+
+        <aside class="panel" aria-label="Corp quick facts">
+          <h3>Corp Snapshot</h3>
+          <div class="meta">
+            <div class="meta-row">
+              <span>Primary focus</span>
+              <span class="tag red">Small-gang PvP</span>
+            </div>
+            <div class="meta-row">
+              <span>Comms</span>
+              <span class="tag">Required</span>
+            </div>
+            <div class="meta-row">
+              <span>Skill level</span>
+              <span class="tag">Newbro + Vet</span>
+            </div>
+            <div class="meta-row">
+              <span>ISK engine</span>
+              <span class="tag gold">Mining / Ratting / Explo</span>
+            </div>
+          </div>
+
+          <div class="tag-row">
+            <span class="tag">Drama-free</span>
+            <span class="tag">Team-first</span>
+            <span class="tag gold">Learn by action</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Highlights">
+      <div class="grid">
+        <div class="card">
+          <div class="icon">⚔</div>
+          <h3>Small-gang PvP</h3>
+          <p>Roams, skirmishes, and coordinated fights. Clear comms, smart flying, no ego.</p>
+        </div>
+        <div class="card">
+          <div class="icon">⛏</div>
+          <h3>Solid PvE backbone</h3>
+          <p>Mining, ratting, and exploration to keep the ISK flowing and the hangars full.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🧠</div>
+          <h3>Newbro + veteran home</h3>
+          <p>We teach fits, mechanics, and mindset. Vets are respected and encouraged to share knowledge.</p>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <section class="section" id="values">
+      <h2>What we believe in</h2>
+      <p class="lead">
+        GODMC is proudly newbro-friendly, and also a laid back home for veterans who want disciplined fights without drama.
+        Come enjoy laughs while building a forever home with amazing people.
+      </p>
+
+      <div class="grid">
+        <div class="values">
+          <ul>
+            <li><b>Brotherhood</b> and camaraderie <span>— we look out for each other.</span></li>
+            <li>Flying with <b>purpose</b>, not ego <span>— good calls beat loud voices.</span></li>
+            <li>Learning from losses and <b>celebrating wins</b> <span>— every fight teaches.</span></li>
+            <li>Having fun while blowing things up <span>— or being blown up.</span></li>
+          </ul>
+        </div>
+
+        <div class="join" id="join">
+          <h2>Recruitment</h2>
+          <p class="lead">
+            Want to fly with purpose and get better fast? Join our Discord and we’ll get you set up.
+          </p>
+
+          <div class="req" aria-label="Recruitment tags">
+            <span class="tag">English-speaking</span>
+            <span class="tag">Working mic</span>
+            <span class="tag gold">Willing to learn</span>
+            <span class="tag red">Team-first</span>
+          </div>
+
+          <ol class="steps" aria-label="How to apply">
+            <li>Click <b>Join Discord</b> and say hi in recruitment.</li>
+            <li>Post your <b>character name</b> + <b>timezone</b> + what you like doing.</li>
+            <li>We’ll chat, answer questions, and get you into fleets.</li>
+          </ol>
+
+          <div class="cta">
+            <a class="btn primary" href="https://discord.gg/tMWAseFwhM" target="_blank" rel="noopener">Join Discord</a>
+            <a class="btn gold" href="https://www.eveonline.com/signup?invc=8e4f4b9b-ed23-48f6-9779-9a1909a95064" target="_blank" rel="noopener">
+              Recruit Link (1M SP)
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery" aria-label="Media">
+      <h2>Life in GODMC</h2>
+      <p class="lead">Three clean hero shots (no duplicates). Swap these with your own screenshots later.</p>
+
+      <div class="photo-strip">
+        <div class="shot s1" data-label="Explosion"></div>
+        <div class="shot s2" data-label="Fleet Fight"></div>
+        <div class="shot s3" data-label="Close Quarters"></div>
+      </div>
+    </section>
+
+    <section class="fleet-banner" aria-label="Fleet banner">
+      <div class="fleet-text">
+        <h2>Brotherhood under fire.</h2>
+        <p class="fleet-sub">
+          We learn from losses, celebrate wins, and keep it fun—whether we’re blowing things up or being blown up.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="killboard" aria-label="Killboard">
+      <h2>Killboard</h2>
+      <p class="lead">Latest kills for GODMC (kills only).</p>
+
+      <div class="embed-card">
+        <div class="embed-head">
+          <h3>zKillboard — GODMC Kills</h3>
+          <a class="btn small secondary" href="https://zkillboard.com/alliance/99014700/kills/" target="_blank" rel="noopener">Open on zKillboard</a>
+        </div>
+        <div id="zkb-feed" class="zkb-feed"><div class="muted">Loading latest kills…</div></div>
+      </div>
+    </section>
+
+    <section class="ceo-section" id="ceo">
+      <div class="ceo-card">
+        <div class="ceo-media">
+          <img src="https://i.imgur.com/UW6ByEx.png" alt="Y0L0-GAMING — CEO portrait">
+        </div>
+
+        <div class="ceo-content">
+          <div class="ceo-kicker">
+            <span class="tag red">CEO</span>
+            <span class="tag gold">Alliance Leadership</span>
+            <span class="tag">Null-sec Veteran</span>
+          </div>
+
+          <h2 class="ceo-title">Y0L0-GAMING</h2>
+
+          <p class="ceo-copy">
+            Y0L0-GAMING is the CEO of God’s Misguided Children (GODMC) and Alliance CEO of Ashes of Valhalla (AOV),
+            bringing nearly 7 years of null-sec experience forged in the front lines of EVE Online.
+            Having flown with major power blocs such as The Imperium and The Initiative, Y0L0 served in Fleet Commander roles,
+            gaining deep experience in large-scale warfare, strategy, and alliance operations.
+            <br><br>
+            His entire EVE career has been rooted in null-sec, where strong leadership and trust are the difference between victory and collapse.
+            After witnessing firsthand how poor leadership can destroy morale, respect, and entire organizations, Y0L0 chose to build something better:
+            an alliance focused on competence, accountability, and camaraderie.
+            <br><br>
+            With experience ranging from solo PvP and small-gang fights to full alliance fleets, PvP remains at the core of his playstyle.
+            To support sustained warfare, he also maintains a strong focus on industry, mining, exploration, and trading—ensuring pilots can fund their fights
+            and grow alongside the alliance.
+            <br><br>
+            As the CEO of Ashes of Valhalla and God’s Misguided Children, Y0L0-GAMING welcomes pilots seeking real content, strong leadership, and a no-nonsense culture.
+          </p>
+
+          <div class="ceo-quote">
+            Join GODMC. Earn Your Place in Valhalla. <span class="accent-gold">Fly Dangerous.</span>
+          </div>
+
+          <div class="ceo-actions">
+            <a class="btn primary" href="https://discord.gg/tMWAseFwhM" target="_blank" rel="noopener">Join Discord</a>
+            <a class="btn gold" href="https://www.eveonline.com/signup?invc=8e4f4b9b-ed23-48f6-9779-9a1909a95064" target="_blank" rel="noopener">
+              Recruit Link (1M SP)
+            </a>
+            <a class="btn twitch" href="https://www.twitch.tv/eve_yg" target="_blank" rel="noopener">
+              Watch on Twitch
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Twitch moved to bottom -->
+    <section class="section" id="twitch" aria-label="Twitch">
+      <h2>Live on Twitch</h2>
+      <p class="lead">Watch fleets, roams, and content from Y0L0-GAMING.</p>
+
+      <div class="embed-card">
+        <div class="embed-head">
+          <h3>Twitch — eve_yg</h3>
+          <a class="btn small secondary" href="https://www.twitch.tv/eve_yg" target="_blank" rel="noopener">Open on Twitch</a>
+        </div>
+        <iframe
+          class="embed-frame"
+          id="twitch-embed" src="about:blank"
+          allowfullscreen="true"
+          scrolling="no"
+          frameborder="0"
+          allow="autoplay; fullscreen"></iframe>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        © <span id="y"></span> God’s Misguided Children [GODMC] — Fly dangerous. Fly together.
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    (() => {
+      'use strict';
+
+      const byId = (id) => document.getElementById(id);
+
+      // Footer year
+      const yearEl = byId('y');
+      if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+      // Reveal animations
+      const revealTargets = document.querySelectorAll(
+        '.card, .panel, .values, .join, .ceo-card, .shot, .fleet-banner, .embed-card'
+      );
+
+      revealTargets.forEach((el) => el.classList.add('reveal'));
+
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) e.target.classList.add('show');
+            });
+          },
+          { threshold: 0.12 }
+        );
+        revealTargets.forEach((el) => io.observe(el));
+      } else {
+        // Older browsers: just show everything
+        revealTargets.forEach((el) => el.classList.add('show'));
+      }
+
+      // Twitch embed (auto parent= based on hostname)
+      (() => {
+        const iframe = byId('twitch-embed');
+        if (!iframe) return;
+
+        const host = window.location.hostname || 'localhost';
+        const parents = new Set([host]);
+
+        // Cover both www + non-www automatically
+        if (host.startsWith('www.')) parents.add(host.slice(4));
+        else parents.add(`www.${host}`);
+
+        const parentParams = Array.from(parents)
+          .filter(Boolean)
+          .map((p) => `parent=${encodeURIComponent(p)}`)
+          .join('&');
+
+        const channel = 'eve_yg';
+        iframe.src = `https://player.twitch.tv/?channel=${encodeURIComponent(channel)}&${parentParams}&autoplay=false&muted=true`;
+
+        // Twitch embeds often require HTTPS
+        const isLocal = host === 'localhost' || host === '127.0.0.1';
+        if (window.location.protocol !== 'https:' && !isLocal) {
+          const card = iframe.closest('.embed-card');
+          if (card && !card.querySelector('.twitch-note')) {
+            const note = document.createElement('div');
+            note.className = 'twitch-note muted';
+            note.textContent =
+              'If Twitch stays blank: Twitch embeds usually require HTTPS. Use the “Open on Twitch” button.';
+            card.appendChild(note);
+          }
+        }
+      })();
+
+      // zKillboard feed (zKB API + ESI details, no iframe)
+      (() => {
+        const box = byId('zkb-feed');
+        if (!box) return;
+
+        const allianceId = 99014700;
+        const zkbUrl = `https://zkillboard.com/api/kills/allianceID/${allianceId}/`;
+        const REFRESH_MS = 120000; // 2 minutes
+        const MAX_KILLS = 10;
+        const CONCURRENCY = 3;
+
+        let inFlight = false;
+
+        async function fetchJson(url, opts) {
+          const res = await fetch(url, opts);
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return await res.json();
+        }
+
+        async function fetchKillmailDetails(killmailId, hash) {
+          // zKB returns killmail_id + hash; use ESI for full details.
+          const esiUrl = `https://esi.evetech.net/latest/killmails/${killmailId}/${hash}/?datasource=tranquility`;
+          return await fetchJson(esiUrl, { headers: { Accept: 'application/json' } });
+        }
+
+        async function fetchNames(ids) {
+          const uniq = Array.from(new Set(ids.filter(Boolean)));
+          if (!uniq.length) return new Map();
+
+          const res = await fetch('https://esi.evetech.net/latest/universe/names/?datasource=tranquility', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify(uniq)
+          });
+
+          if (!res.ok) throw new Error(`names HTTP ${res.status}`);
+
+          const arr = await res.json(); // [{category,id,name}, ...]
+          const map = new Map();
+          (Array.isArray(arr) ? arr : []).forEach((o) => map.set(o.id, o.name));
+          return map;
+        }
+
+        async function runWithLimit(items, limit, fn) {
+          const results = new Array(items.length);
+          let idx = 0;
+
+          const workers = Array.from({ length: Math.min(limit, items.length) }, async () => {
+            while (idx < items.length) {
+              const i = idx++;
+              try {
+                results[i] = await fn(items[i]);
+              } catch {
+                results[i] = null;
+              }
+            }
+          });
+
+          await Promise.all(workers);
+          return results;
+        }
+
+        const eveTypeIcon = (typeId, size = 64) => `https://images.evetech.net/types/${typeId}/icon?size=${size}`;
+        const eveCharPortrait = (id, size = 64) => `https://images.evetech.net/characters/${id}/portrait?size=${size}`;
+        const eveCorpLogo = (id, size = 64) => `https://images.evetech.net/corporations/${id}/logo?size=${size}`;
+
+        async function loadZkbFeed() {
+          if (inFlight) return;
+          inFlight = true;
+
+          try {
+            box.innerHTML = '<div class="muted">Loading latest kills…</div>';
+
+            // 1) Get latest kill IDs + hashes (+ value) from zKB
+            const zkb = await fetchJson(zkbUrl, { headers: { Accept: 'application/json' } });
+
+            if (!Array.isArray(zkb) || zkb.length === 0) {
+              box.innerHTML = '<div class="muted">No recent kills found right now.</div>';
+              return;
+            }
+
+            const items = zkb
+              .slice(0, MAX_KILLS)
+              .map((k) => ({
+                killmail_id: k.killmail_id ?? k.killID ?? k.killmailID,
+                hash: k?.zkb?.hash,
+                value: k?.zkb?.totalValue ?? k?.zkb?.total_value ?? null
+              }))
+              .filter((x) => x.killmail_id && x.hash);
+
+            if (!items.length) {
+              box.innerHTML = '<div class="muted">No recent kills found right now.</div>';
+              return;
+            }
+
+            // 2) Fetch full killmail details from ESI (limited concurrency)
+            const details = await runWithLimit(items, CONCURRENCY, (it) =>
+              fetchKillmailDetails(it.killmail_id, it.hash)
+            );
+
+            // 3) Resolve IDs to names in one batch call
+            const idsToResolve = [];
+            details.forEach((d) => {
+              if (!d) return;
+              idsToResolve.push(d.solar_system_id);
+              const v = d.victim || {};
+              idsToResolve.push(v.character_id, v.ship_type_id, v.corporation_id, v.alliance_id);
+            });
+
+            let nameMap = new Map();
+            try {
+              nameMap = await fetchNames(idsToResolve);
+            } catch {
+              nameMap = new Map();
+            }
+
+            // 4) Render
+            const list = document.createElement('ul');
+
+            details.forEach((d, i) => {
+              const meta = items[i];
+              if (!d || !meta) return;
+
+              const v = d.victim || {};
+              const shipId = v.ship_type_id || null;
+              const charId = v.character_id || null;
+              const corpId = v.corporation_id || null;
+
+              const victimName =
+                charId && nameMap.get(charId) ? nameMap.get(charId) : charId ? `Pilot #${charId}` : 'Unknown victim';
+
+              const shipName =
+                shipId && nameMap.get(shipId) ? nameMap.get(shipId) : shipId ? `Ship #${shipId}` : '';
+
+              const systemName =
+                d.solar_system_id && nameMap.get(d.solar_system_id) ? nameMap.get(d.solar_system_id) : '';
+
+              const timeStr = d.killmail_time ? new Date(d.killmail_time).toLocaleString() : '';
+              const valueStr = meta.value ? `${Math.round(meta.value).toLocaleString()} ISK` : '';
+
+              const metaParts = [systemName, timeStr, valueStr].filter(Boolean);
+              const link = `https://zkillboard.com/kill/${meta.killmail_id}/`;
+
+              const imgs = `
+                <div class="kb-imgs">
+                  ${shipId ? `<img class="kb-img" src="${eveTypeIcon(shipId, 64)}" alt="Ship icon">` : ``}
+                  ${charId ? `<img class="kb-img round" src="${eveCharPortrait(charId, 64)}" alt="Pilot portrait">` : ``}
+                  ${corpId ? `<img class="kb-img round" src="${eveCorpLogo(corpId, 64)}" alt="Corporation logo">` : ``}
+                </div>
+              `;
+
+              const li = document.createElement('li');
+              li.innerHTML = `
+                <div class="left">
+                  ${imgs}
+                  <a href="${link}" target="_blank" rel="noopener">
+                    <b>${victimName}</b>${shipName ? ' — ' + shipName : ''}
+                  </a>
+                </div>
+                <span class="meta">${metaParts.join(' • ')}</span>
+              `;
+              list.appendChild(li);
+            });
+
+            // If ESI failed completely, show a clear fallback
+            if (!list.children.length) {
+              box.innerHTML =
+                '<div class="muted">Loaded kill IDs, but couldn’t fetch details (ESI blocked). Use “Open on zKillboard”.</div>';
+              return;
+            }
+
+            const updated = document.createElement('div');
+            updated.className = 'muted kb-updated';
+            updated.textContent = 'Updated: ' + new Date().toLocaleTimeString();
+
+            box.innerHTML = '';
+            box.appendChild(list);
+            box.appendChild(updated);
+          } catch {
+            box.innerHTML =
+              '<div class="muted">Couldn’t load the zKillboard feed (blocked by browser/network). Use “Open on zKillboard”.</div>';
+          } finally {
+            inFlight = false;
+          }
+        }
+
+        loadZkbFeed();
+        setInterval(loadZkbFeed, REFRESH_MS);
+      })();
+    })();
+  </script>
+</body>
+</html>
